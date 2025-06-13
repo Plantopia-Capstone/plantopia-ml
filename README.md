@@ -13,14 +13,14 @@ Repositori ini adalah dokumentasi lengkap dari proyek `Plantopia-ML`, solusi AI 
 
 ## Daftar Isi
 
-- [Latar Belakang](#-latar-belakang)
-- [Tujuan Proyek](#-tujuan-proyek)
-- [Struktur Folder](#-struktur-folder)
-- [Model dan Arsitektur](#-model-dan-arsitektur)
-- [Evaluasi Model](#-evaluasi-model)
-- [Cara Menjalankan](#-cara-menjalankan)
-- [Tim Pengembang](#-tim-pengembang)
-- [Lisensi](#-lisensi)
+- [Latar Belakang](#latar-belakang)
+- [Tujuan Proyek](#tujuan-proyek)
+- [Struktur Folder](#struktur-folder)
+- [Model dan Arsitektur](#model-dan-arsitektur)
+- [Evaluasi Model](#evaluasi-model)
+- [Cara Menjalankan](#cara-menjalankan)
+- [Tim Pengembang](#tim-pengembang)
+- [Lisensi](#lisensi)
 
 ---
 
@@ -43,15 +43,32 @@ Sayangnya, tidak semua petani memiliki akses terhadap tenaga ahli untuk diagnosi
 
 ## Struktur Folder
 
-```
+```text
 plantopia-ml/
 │
+├── data/                  # Dataset (external, processed, raw)
+│   ├── external/
+│   ├── processed/
+│   └── raw/
 ├── models/                # Model .h5 hasil pelatihan
-├── notebooks/             # Notebook eksplorasi, preprocessing, dan pelatihan model
-├── assets/                # Visualisasi, rating, atau aset tambahan
-├── app.py                 # Script Gradio untuk demo model
-├── requirements.txt       # Dependensi Python
-└── README.md              # Dokumentasi ini
+│   ├── mobilenetv2_best_model.h5
+│   ├── ...
+│   └── plantopia.h5
+├── notebooks/             # Notebook eksplorasi, preprocessing, training
+│   └── [Notebook] Capstone Project.ipynb
+├── reports/               # Laporan (EDA, summary, dsb.)
+├── scripts/               # Script utilitas tambahan / pipeline
+├── src/                   # Source code utama
+│   ├── data/              # Modul loading, transformasi data
+│   ├── features/          # Ekstraksi fitur, engineering
+│   ├── models/            # Training, evaluasi, inference
+│   ├── utils/             # Fungsi & tools tambahan
+│   └── main.py            # Entry point project
+├── tests/                 # Unit test, validasi
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -91,13 +108,19 @@ cd plantopia-ml
 pip install -r requirements.txt
 ```
 
-3. **Jalankan demo Gradio:**
+3. **Jalankan entry point (src/main.py):**
+
+```bash
+python src/main.py
+```
+
+4. **Jalankan demo Gradio (jika tersedia):**
 
 ```bash
 python app.py
 ```
 
-4. **Buka di browser**: `http://localhost:7860`
+5. **Buka di browser**: `http://localhost:7860`
 
 ---
 
